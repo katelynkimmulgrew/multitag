@@ -58,7 +58,6 @@ for r in result:
     print(r["summary"])
     print(r["caption"])
     print(r["slug"])
-
                                                     
                                                     #for b in both:
                                                     #    print(b['tags'])
