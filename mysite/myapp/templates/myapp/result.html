@@ -1,0 +1,18 @@
+{#@register.filter(name='keyvalue')#}
+{#def keyvalue(dict,key):#}
+{#return dict[key]#}
+{#    keyvalue = register.filter('keyvalue', keyvalue)#}
+<h1>Page {{page_number}}</h1>
+{% for r in result %}
+    <p>
+    {#with value_list=r|keyvalue:"tags"#}
+    {% for key, value in r.items %}
+        {% if key == "tags" %}
+	{%for t in value%}
+	    {{t}}
+	{%endfor%}
+	  {% endif %}
+	  
+    {%endfor%}
+    </p>
+{% endfor %}

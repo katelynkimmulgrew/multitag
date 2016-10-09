@@ -53,4 +53,6 @@ def result(request, page_number):
         if isBreak:
             break
 
-    return HttpResponse("Page " + page_number + ", First Tag is " + result[0]["tags"][0] )
+#    return HttpResponse("Page " + page_number + ", First Tag is " + result[0]["tags"][0] )
+    context = {'result': result, 'page_number': page_number}
+    return render(request, 'myapp/result.html', context)
