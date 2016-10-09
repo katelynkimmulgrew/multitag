@@ -33,7 +33,7 @@ else:
 tags = ['pride and prejudice','gif']
 result = []
 count = 0
-numResults = 22
+numResults = 1
 #print(type(posts))
 #for key in posts:
 #    print(key)
@@ -55,7 +55,9 @@ for i in range(0, numIterations):
     if isBreak:
         break
 for r in result: 
-    print(r['tags'])
+    print(r["summary"])
+    print(r["caption"])
+    print(r["slug"])
 
                                                     
                                                     #for b in both:
