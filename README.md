@@ -1,0 +1,13 @@
+# MultiTag
+
+## Overview
+
+As of now, a user can only search through a tumblr blog by one tag at a time.  How nice it would be to search for posts that contain two or more tags at a time.  That is the goal of this app.
+
+## Implementation
+
+Using Python, Django, and the Tumblr API (so far)
+
+## In Progress
+
+This app is still in the production phase, but anyone is free to look at the code!
