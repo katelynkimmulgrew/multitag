@@ -31,7 +31,7 @@ def result(request, page_number):
     tags = ['pride and prejudice','gif']
     result = []
     count = 0
-    numResults = 1
+    numResults = 10*page_number
     #print(type(posts))
     #for key in posts:
     #    print(key)
@@ -54,5 +54,6 @@ def result(request, page_number):
             break
 
 #    return HttpResponse("Page " + page_number + ", First Tag is " + result[0]["tags"][0] )
-    context = {'result': result, 'page_number': page_number}
+    newResult = result[-10:]
+    context = {'result': newResult, 'page_number': page_number}
     return render(request, 'myapp/result.html', context)

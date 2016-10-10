@@ -19,6 +19,9 @@ with open('credentials.json', 'r') as f:
 blogHandle = 'janeites'
 blogName = blogHandle + ".tumblr.com"
 blogDict = client.blog_info(blogName)
+print(type(blogDict))
+for key, value in blogDict.items():
+    print(key, value)
 numPosts = blogDict["blog"]["total_posts"]
 numIterations = 0
 if numPosts>20:
@@ -55,9 +58,6 @@ for i in range(0, numIterations):
     if isBreak:
         break
 for r in result: 
-    print(r["summary"])
-    print(r["caption"])
-    print(r["slug"])
-                                                    
+    print(r["id"])                                
                                                     #for b in both:
                                                     #    print(b['tags'])

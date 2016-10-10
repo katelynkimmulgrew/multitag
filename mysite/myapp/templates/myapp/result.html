@@ -7,12 +7,9 @@
     <p>
     {#with value_list=r|keyvalue:"tags"#}
     {% for key, value in r.items %}
-        {% if key == "tags" %}
-	{%for t in value%}
-	    {{t}}
-	{%endfor%}
-	  {% endif %}
-	  
+    { % if key == "id" % }
+        {{value}}
+    { % endif % }
     {%endfor%}
     </p>
 {% endfor %}
