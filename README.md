@@ -11,3 +11,5 @@ Using Python, Django, and the Tumblr API (so far)
 ## In Progress
 
 This app is still in the production phase, but anyone is free to look at the code!
+
+The Django site is in the folder mysite, and the app implementation is in views.py.  Too see a rough working draft of my app used for test purpose, look at the file test.py
