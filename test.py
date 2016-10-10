@@ -19,9 +19,9 @@ with open('credentials.json', 'r') as f:
 blogHandle = 'janeites'
 blogName = blogHandle + ".tumblr.com"
 blogDict = client.blog_info(blogName)
-print(type(blogDict))
-for key, value in blogDict.items():
-    print(key, value)
+#print(type(blogDict))
+#for key, value in blogDict.items():
+#    print(key, value)
 numPosts = blogDict["blog"]["total_posts"]
 numIterations = 0
 if numPosts>20:
