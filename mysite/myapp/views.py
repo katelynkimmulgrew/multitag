@@ -31,7 +31,8 @@ def result(request, page_number):
     tags = ['pride and prejudice','gif']
     result = []
     count = 0
-    numResults = 10*page_number
+    perPage = 10
+    numResults = perPage*page_number
     #print(type(posts))
     #for key in posts:
     #    print(key)
@@ -52,8 +53,15 @@ def result(request, page_number):
                 break
         if isBreak:
             break
-
-#    return HttpResponse("Page " + page_number + ", First Tag is " + result[0]["tags"][0] )
-    newResult = result[-10:]
-    context = {'result': newResult, 'page_number': page_number}
+    remainder = len(result)%perPage
+    full_pages = int( math.floor(len(result)/perPage))
+    isEmpty = True
+    if full_pages==int(page_number):
+        isEmpty = False
+        num_pages_to_render = perPage
+    elif full_pages!=int(page_number)-1 and remainder!=0:
+        isEmpty = False
+        num_pages_to_render = remainder
+    newResult = result[-num_pages_to_render:]
+    context = {'result': newResult,'isEmpty': isEmpty, 'page_number': page_number}
     return render(request, 'myapp/result.html', context)

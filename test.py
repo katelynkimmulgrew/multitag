@@ -8,7 +8,7 @@ with open('credentials.json', 'r') as f:
     client = pytumblr.TumblrRestClient(credentials['consumer_key'], credentials['consumer_secret'], credentials['oauth_token'], credentials['oauth_token_secret'])
 
 
-
+page_number = 20
 #firstTag = client.tagged("jane austen", limit=15)
 #restOfTags  = ['persuasion','books']
 
@@ -36,7 +36,7 @@ else:
 tags = ['pride and prejudice','gif']
 result = []
 count = 0
-numResults = 1
+numResults = 10*page_number
 #print(type(posts))
 #for key in posts:
 #    print(key)
@@ -57,7 +57,8 @@ for i in range(0, numIterations):
             break
     if isBreak:
         break
-for r in result: 
+newResult = result[-10:]
+for r in newResult: 
     print(r["id"])                                
                                                     #for b in both:
                                                     #    print(b['tags'])

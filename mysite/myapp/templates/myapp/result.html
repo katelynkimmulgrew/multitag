@@ -3,6 +3,10 @@
 {#return dict[key]#}
 {#    keyvalue = register.filter('keyvalue', keyvalue)#}
 <h1>Page {{page_number}}</h1>
+
+{% if isEmpty %}
+<p>There are no results for this page.</p>
+{% else %}
 {% for r in result %}
     <p>
     {#with value_list=r|keyvalue:"tags"#}
@@ -15,4 +19,4 @@
     </p>
 {% endfor %}
 
-
+{% endif %}
