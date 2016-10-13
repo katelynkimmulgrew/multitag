@@ -32,7 +32,8 @@ def result(request, page_number):
     result = []
     count = 0
     perPage = 10
-    numResults = perPage*page_number
+    numResults = perPage*int(page_number)
+    print("NumResults " + numResults)
     #print(type(posts))
     #for key in posts:
     #    print(key)
@@ -53,15 +54,22 @@ def result(request, page_number):
                 break
         if isBreak:
             break
+    print("count " + count)
     remainder = len(result)%perPage
     full_pages = int( math.floor(len(result)/perPage))
+    print("len result " + len(result))
+    print("remainder " + remainder)
+    print("full_pages" + full_pages)
     isEmpty = True
     if full_pages==int(page_number):
         isEmpty = False
-        num_pages_to_render = perPage
-    elif full_pages!=int(page_number)-1 and remainder!=0:
+        num_posts_to_render = perPage
+    elif full_pages==int(page_number)-1 and remainder!=0:
         isEmpty = False
-        num_pages_to_render = remainder
-    newResult = result[-num_pages_to_render:]
+        num_posts_to_render = remainder
+    else:
+        isEmpty = True
+        num_posts_to_render = 0
+    newResult = result[-num_posts_to_render:]
     context = {'result': newResult,'isEmpty': isEmpty, 'page_number': page_number}
     return render(request, 'myapp/result.html', context)
