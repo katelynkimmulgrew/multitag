@@ -33,17 +33,18 @@ def result(request, page_number):
     count = 0
     perPage = 10
     numResults = perPage*int(page_number)
-    print("NumResults " + numResults)
+    #print("NumResults ", numResults)
     #print(type(posts))
     #for key in posts:
     #    print(key)
 
     #print(len(posts))
     #print(posts["total_posts"]
+    limit = 20
     isBreak = False
     for i in range(0, numIterations):
-        offset = 20*i
-        postsGrab = client.posts(blogName, offset = offset)
+        offset = limit*i
+        postsGrab = client.posts(blogName, offset = offset,limit=limit)
         posts = postsGrab["posts"]
         for p in posts:
             if set(tags).issubset(p["tags"]):
@@ -54,12 +55,12 @@ def result(request, page_number):
                 break
         if isBreak:
             break
-    print("count " + count)
+    #print("count ", count)
     remainder = len(result)%perPage
     full_pages = int( math.floor(len(result)/perPage))
-    print("len result " + len(result))
-    print("remainder " + remainder)
-    print("full_pages" + full_pages)
+    #print("len result ", len(result))
+    #print("remainder ", remainder)
+    #print("full_pages", full_pages)
     isEmpty = True
     if full_pages==int(page_number):
         isEmpty = False
