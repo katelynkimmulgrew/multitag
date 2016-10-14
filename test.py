@@ -46,7 +46,7 @@ numResults = 10*page_number
 isBreak = False
 for i in range(0, numIterations):
     offset = 20*i
-    postsGrab = client.posts(blogName, offset = offset)
+    postsGrab = client.posts(blogName, offset = offset, limit = 20)
     posts = postsGrab["posts"]
     for p in posts:
         if set(tags).issubset(p["tags"]):
@@ -58,7 +58,16 @@ for i in range(0, numIterations):
     if isBreak:
         break
 newResult = result[-10:]
-for r in newResult: 
-    print(r["id"])                                
-                                                    #for b in both:
-                                                    #    print(b['tags'])
+for r in newResult:
+    for key, value in r.items():
+        if key == "photos":
+            for p_object in value:
+                for p, v in p_object.items():
+                    if p=="alt_sizes":
+                        for photo_info_list in v:
+                            print(photo_info_list)
+    #                        for i_dict in v:
+   #                             print(i_dict)
+   #                             for pindex, pvalue in i_dict.items():
+  #                                  if(pindex=="url"):
+ #                                       print(pvalue)

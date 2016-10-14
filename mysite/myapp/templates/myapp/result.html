@@ -11,14 +11,35 @@
     <p>
     {#with value_list=r|keyvalue:"tags"#}
     {% for key, value in r.items %}
-    {% if key == "tags" %}
-    {% for t in value %}
-    {{t}}
-    {% endfor %}
-		{% endif %}
+    {% if key == "photos" %}
+         
+        {% for p_object in value %}
+	
+            {% for p, v in p_object.items %}
+                {% if p == "caption" %}
+		<p>{{v}}<p>
+		{% endif %} {# end if caption #}
+		{% if p == "alt_sizes" %}
+		{% for photo_info_list in v %}
+	
+	
+		{% for i_dict in v %}
+		
+		{% for pindex, pvalue in i_dict.items %}
+		
+		{% if pindex == "url" %} 
+		     <img src = "{{pvalue}}"/>
+		   {% endif %} {# end if url #}
+		    {% endfor %} {# end for photo_info_index #}
+		    {% endfor %} {# end for i_dict #}
+		    {% endfor %} {# ed for photo_info #}
+		    {% endif %} {# end if alt_sizes #}
+		    {% endfor %} {# end for p #}
+		    {% endfor %} {# end for p_object #}
+		    {% endif %} {# end if key #}
        
-    {%endfor%}
+		    {%endfor%} {# end for key #}
     </p>
-{% endfor %}
+    {% endfor %} {# end for r #}
 
-{% endif %}
+    {% endif %} {# end if isEmpty #}
