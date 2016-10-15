@@ -2,6 +2,9 @@
 {#def keyvalue(dict,key):#}
 {#return dict[key]#}
 {#    keyvalue = register.filter('keyvalue', keyvalue)#}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'myapp/style.css' %}" />
+
 <h1>Page {{page_number}}</h1>
 
 {% if isEmpty %}
@@ -11,34 +14,37 @@
     <p>
     {#with value_list=r|keyvalue:"tags"#}
     {% for key, value in r.items %}
+    <p>
     {% if key == "photos" %}
          
         {% for p_object in value %}
 	
-            {% for p, v in p_object.items %}
-                {% if p == "caption" %}
-		<p>{{v}}<p>
-		{% endif %} {# end if caption #}
-		{% if p == "alt_sizes" %}
-		{% for photo_info_list in v %}
+	<img src="{{p_object.original_size.url}}"/>
+	
+      {#  {% for p, v in p_object.items %} #}
+     
+     
+		
+		{# {% if p == "alt_sizes" %} #}
+		{# {% for photo_info_list in v %} #}
 	
 	
-		{% for i_dict in photo_info_list %}
+		{# {% for i_dict in photo_info_list %} #}
 	
-		{% for pindex, pvalue in i_dict.items %}
-		{% if pindex == "url" %} 
-		     <img src = "{{pvalue}}"/>
-		   {% endif %} {# end if url #}
-		   {% endfor %} {# end for pindex #}
-		    {% endfor %} {# end for i_dict #}
-		    {% endfor %} {# ed for photo_info #}
-		    {% endif %} {# end if alt_sizes #}
-		    {% endfor %} {# end for p #}
-		    {% endfor %} {# end for p_object #}
-		    {% endif %} {# end if key #}
+		{# {% for pindex, pvalue in i_dict.items %} #}
+		{# {% if pindex == "url" %} #}
+		{# <img src = "{{pvalue}}"/> #}
+		{# {% endif %}#} {# end if url #}
+		{# {% endfor %} #}{# end for pindex #}
+		{# {% endfor %} #} {# end for i_dict #}
+		{# {% endfor %} #} {# ed for photo_info #}
+		{# {% endif %} #} {# end if alt_sizes #}
+		{# {% endfor %} #} {# end for p #}
+		{% endfor %}  {# end for p_object #}
+		{% endif %}  {# end if key #}
        
-		    {%endfor%} {# end for key #}
+		{%endfor%} {# end for key #}
     </p>
     {% endfor %} {# end for r #}
-
+    </p>
     {% endif %} {# end if isEmpty #}
