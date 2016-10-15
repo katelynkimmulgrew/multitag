@@ -61,11 +61,16 @@ newResult = result[-10:]
 for r in newResult:
     for key, value in r.items():
         if key == "photos":
-            for p_object in value:
-                for p, v in p_object.items():
-                    if p=="alt_sizes":
-                        for photo_info_list in v:
-                            print(photo_info_list)
+            for pic in value:
+                print(["original_size"]["url"])
+            print()
+            print()
+            print()
+   #         for p_object in value:
+  #              for p, v in p_object.items():
+  #                  if p=="alt_sizes":
+ #                       for photo_info_list in v:
+#                            print(photo_info_list)
     #                        for i_dict in v:
    #                             print(i_dict)
    #                             for pindex, pvalue in i_dict.items():

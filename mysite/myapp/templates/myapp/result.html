@@ -23,14 +23,13 @@
 		{% for photo_info_list in v %}
 	
 	
-		{% for i_dict in v %}
-		
+		{% for i_dict in photo_info_list %}
+	
 		{% for pindex, pvalue in i_dict.items %}
-		
 		{% if pindex == "url" %} 
 		     <img src = "{{pvalue}}"/>
 		   {% endif %} {# end if url #}
-		    {% endfor %} {# end for photo_info_index #}
+		   {% endfor %} {# end for pindex #}
 		    {% endfor %} {# end for i_dict #}
 		    {% endfor %} {# ed for photo_info #}
 		    {% endif %} {# end if alt_sizes #}
